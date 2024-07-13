@@ -22,5 +22,10 @@ This repository includes several Python projects focused on SEO automation. Thes
 - Checking on-page SEO factors
 - Automating routine SEO tasks
 
-Each project is designed to save time and provide valuable insights to improve your SEO efforts.
+## SEO Automation Using API
 
+### Benefits of the Web Search Indexing API
+
+The Indexing API allows site owners to notify Google when they add or remove pages from their site, or update content at a previously-submitted URL. This can help Google schedule pages for a fresh crawl, which can lead to higher quality user traffic and improved search visibility.
+
+Each project is designed to save time and provide valuable insights to improve your SEO efforts.
