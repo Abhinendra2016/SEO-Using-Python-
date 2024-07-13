@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Console Indexing Api</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <img
+        src="{{ url_for('static', filename='images/logo.png') }}"
+        alt="Company Logo"
+      />
+    </header>
+    <main>
+      <h1>Url Indexing</h1>
+      <form action="{{ url_for('submit') }}" method="post">
+        <textarea
+          name="urls"
+          rows="10"
+          cols="50"
+          placeholder="Enter URLs, one per line"
+        ></textarea>
+        <button type="submit">Submit</button>
+      </form>
+      <div class="note">
+        <p>Note: The daily limit for submitting URLs for indexing is 200.</p>
+      </div>
+      <h2>History of Submitted URLs</h2>
+      <button onclick="toggleHistory()">View History</button>
+      <div class="dialog-box" id="dialog-box" style="display: none">
+        <h4>History of Submitted URLs on {{ today_date }}</h4>
+        <ul>
+          {% for date, urls in history_by_date.items() %} {% if date ==
+          today_date %} {% for url, success, message in urls %}
+          <li><strong>{{ url }}</strong>: {{ message }}</li>
+          {% endfor %} {% endif %} {% endfor %}
+        </ul>
+        <button class="close-btn" onclick="toggleHistory()">Close</button>
+      </div>
+    </main>
+    <script>
+      function toggleHistory() {
+        const dialogBox = document.getElementById("dialog-box");
+        dialogBox.style.display =
+          dialogBox.style.display === "none" ? "block" : "none";
+      }
+
+      window.onclick = function (event) {
+        const dialogBox = document.getElementById("dialog-box");
+        if (event.target === dialogBox) {
+          dialogBox.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indexing Results</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <img
+        src="{{ url_for('static', filename='images/logo.png') }}"
+        alt="Company Logo"
+      />
+      <h1>Indexing Results</h1>
+    </header>
+    <main>
+      <h2>Results for {{ today_date }}</h2>
+      <ul>
+        {% for url, success, message in results %}
+        <li><strong>{{ url }}</strong>: {{ message }}</li>
+        {% endfor %}
+      </ul>
+      <a href="{{ url_for('index') }}" class="button-link"
+        ><button type="button">Back to Home</button></a
+      >
+      <h2>History of Submitted URLs</h2>
+      <ul>
+        {% for date, urls in history_by_date.items() %}
+        <li>{{ date }}</li>
+        <ul>
+          {% for url, success, message in urls %}
+          <li><strong>{{ url }}</strong>: {{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+      </ul>
+    </main>
+  </body>
+</html>
